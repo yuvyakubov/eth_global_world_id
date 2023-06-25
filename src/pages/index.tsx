@@ -52,23 +52,27 @@ export default function Home() {
 		});
 	};
 
+	function handleButtonClick() {
+        window.location.href = "/";
+    };
+
 	return (
 		<div className={styles.container}>
 			<div className="logo" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40vh", marginTop: 20 }}>
-				<button className="logo-icon" ><img src={logoImage.src} /></button>
+				<button className="logo-icon" onClick={handleButtonClick}><img src={logoImage.src} alt="Logo" /></button>
 			</div>
 			<div className={styles.boxContainer}>
 				<p className={styles.centeredParagraph}>
-					Welcome to ZK-Vote, a privacy-preserving and trusted voting platform built on World ID.
+					ZK-Vote is a privacy-preserving and auditable voting platform built on World ID and Polygon.
 				</p>
 				<br /><br />
 				<p className={styles.centeredParagraph}>
 					Voting data will be published on-chain to promote transparency, auditability and real-time tracking, adding trust and reliability to the voting process.
 				</p>
 			</div>
-			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "35vh" }}>
+			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "28.2vh" }}>
 				<IDKitWidget action={process.env.NEXT_PUBLIC_WLD_ACTION_NAME!} onSuccess={onSuccess} handleVerify={handleProof} app_id={process.env.NEXT_PUBLIC_WLD_APP_ID!} credential_types={[CredentialType.Orb, CredentialType.Phone]}>
-					{({ open }) => <button style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginTop: -50 }} onClick={open}>Verify with World ID</button>}
+					{({ open }) => <button style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginTop: -50 }} onClick={open}>Verify that you are a unique human-being with World ID</button>}
 				</IDKitWidget>
 			</div>
 		</div>

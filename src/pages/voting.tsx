@@ -17,8 +17,8 @@ const Vote = () => {
 
     useEffect(() => {
         document.title = 'ZK-Vote'; // Set the desired app name here
-        if (!isAuthenticated) {
-            alert('You need to verify your identity with World ');
+        if (!nullifierHash!) {
+            alert('You need to verify your identity with World ID to vote.');
             router.push('/');
         }
     }, [isAuthenticated, router]);
@@ -32,12 +32,38 @@ const Vote = () => {
 
             // Create an instance of the contract using the address and ABI
             const provider = new ethers.BrowserProvider(window.ethereum);
-            const address = '0x1632f65044d76f9afea2c5e7c5f8894f9fdfd37c';
+            const address = '0x7dd3be682c7e33abc723bd470b7c5256ba7613cf';
             const abi = [
                 {
                     "inputs": [],
                     "stateMutability": "nonpayable",
                     "type": "constructor"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "hash",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "voteForA",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "hash",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "voteForB",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
                 },
                 {
                     "inputs": [],
@@ -83,32 +109,6 @@ const Vote = () => {
                     ],
                     "stateMutability": "view",
                     "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "string",
-                            "name": "hash",
-                            "type": "string"
-                        }
-                    ],
-                    "name": "voteForA",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "string",
-                            "name": "hash",
-                            "type": "string"
-                        }
-                    ],
-                    "name": "voteForB",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
                 }
             ];
 
@@ -119,6 +119,7 @@ const Vote = () => {
 
 
             await tx.wait();
+            handleSuccessButtonClick();
             contract.getACount().then((res: any) => {
                 console.log(res.toString());
             })
@@ -128,7 +129,8 @@ const Vote = () => {
                     icon: 'error',
                     title: 'You have already voted',
                     text: 'You can only vote once. Please try voting with a different World ID.',
-                })
+                });
+                handleSuccessButtonClick();
                 return;
             }
             console.error('Failed to connect to the contract:', error);
@@ -142,12 +144,38 @@ const Vote = () => {
 
             // Create an instance of the contract using the address and ABI
             const provider = new ethers.BrowserProvider(window.ethereum);
-            const address = '0x1632f65044d76f9afea2c5e7c5f8894f9fdfd37c';
+            const address = '0x7dd3be682c7e33abc723bd470b7c5256ba7613cf';
             const abi = [
                 {
                     "inputs": [],
                     "stateMutability": "nonpayable",
                     "type": "constructor"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "hash",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "voteForA",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "hash",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "voteForB",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
                 },
                 {
                     "inputs": [],
@@ -193,32 +221,6 @@ const Vote = () => {
                     ],
                     "stateMutability": "view",
                     "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "string",
-                            "name": "hash",
-                            "type": "string"
-                        }
-                    ],
-                    "name": "voteForA",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "string",
-                            "name": "hash",
-                            "type": "string"
-                        }
-                    ],
-                    "name": "voteForB",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
                 }
             ];
             const signer = await provider.getSigner();
@@ -226,45 +228,66 @@ const Vote = () => {
             const tx = await contract.voteForB(nullifierHash)
 
             await tx.wait();
+            handleSuccessButtonClick();
             contract.getBCount().then((res: any) => {
                 console.log(res.toString());
             })
         } catch (error) {
+            if (error instanceof Error && error.message.includes('Already voted')) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'You have already voted',
+                    text: 'You can only vote once. Please try voting with a different World ID.',
+                    customClass: {
+                        confirmButton: 'custom-button-class',
+                    },
+                });
+                handleSuccessButtonClick();
+                return;
+            }
             console.error('Failed to connect to the contract:', error);
         }
     }
 
+    function handleButtonClick() {
+        window.location.href = "/";
+    };
+
+    function handleSuccessButtonClick() {
+        router.push('/success');
+    };
+
+
     return (
-        isAuthenticated && (
-            <div className={styles.container}>
-                <div className="logo" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40vh", marginTop: 20 }}>
-                    <button className="logo-icon" ><img src={logoImage.src} /></button>
-                </div>
-                <div className={styles.boxContainer}>
-                    <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
-                        A voter can only vote once. This is tracked via their World ID.
-                    </p>
-                    <br /><br />
-                    <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
-                        The owner of the voting smart contract will provide their signature to verify that you are eligible to vote.
-                    </p>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', marginTop: -62.5 }}>
-                    <button
-                        style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginRight: 20 }}
-                        onClick={voteForA}
-                    >
-                        Vote For A
-                    </button>
-                    <button
-                        style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginLeft: 20 }}
-                        onClick={voteForB}
-                    >
-                        Vote For B
-                    </button>
-                </div>
+        <div className={styles.container}>
+            <div className="logo" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40vh", marginTop: 20 }}>
+                <button className="logo-icon" onClick={handleButtonClick}><img src={logoImage.src} alt="Logo" /></button>
             </div>
-        )
+            <div className={styles.boxContainer}>
+                <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
+                    Voters can only vote once. This is tracked by your World ID.
+                </p>
+                <br /><br />
+                <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
+                    Track the results of the votes live in real-time on &nbsp;
+                    <a target='_blank' href="https://mumbai.polygonscan.com/address/0x7dd3be682c7e33abc723bd470b7c5256ba7613cf" className={styles.link}>Mumbai Polygonscan</a>.
+                </p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '43.2vh', marginTop: -62.5 }}>
+                <button
+                    style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginRight: 20 }}
+                    onClick={voteForA}
+                >
+                    Vote For A
+                </button>
+                <button
+                    style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginLeft: 20 }}
+                    onClick={voteForB}
+                >
+                    Vote For B
+                </button>
+            </div>
+        </div>
     );
 };
 

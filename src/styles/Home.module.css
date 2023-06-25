@@ -2,6 +2,18 @@
 	padding: 0 2rem;
 }
 
+/* styles.css */
+.custom-button-class {
+    background-color: black;
+    color: white;
+}
+
+/* styles.css */
+.link {
+    color: blue;
+    text-decoration: underline;
+}
+
 .centeredParagraph {
 	text-align: center;
 	margin-left: auto;
