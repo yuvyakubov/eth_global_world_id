@@ -21,7 +21,7 @@ const SuccessPage = () => {
                 <button className="logo-icon" onClick={handleButtonClick}><img src={logoImage.src} alt="Logo" /></button>
             </div>
             <div className="logo" style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: -30 }}>
-                <img src={ThumbsUpGif.src} alt="Success GIF" className={styles.gif} style={{maxHeight: 300}}/>
+                <img src={ThumbsUpGif.src} alt="Success GIF" className={styles.gif} style={{maxHeight: 200}}/>
             </div>
             <br /><br />
             <div className={styles.boxContainer}>
@@ -29,7 +29,14 @@ const SuccessPage = () => {
                     Thanks for voting!
                 </p>
             </div>
-            <div style={{minHeight: "8.9vh"}}></div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '43.2vh', marginTop: -90 }}>
+                <button
+                    onClick={handleButtonClick}
+                    style={{ backgroundColor: 'black', color: 'white', padding: 20, borderRadius: 10, marginRight: 20 }}
+                >
+                    Return to Home Page
+                </button>
+            </div>
         </div>
     );
 };
