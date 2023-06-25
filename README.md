@@ -6,7 +6,7 @@ Voting data will be published on-chain to promote transparency, auditability and
 
 ## ZK-Vote Screenshots
 
-![screencapture-localhost-3000-2023-06-25-04_10_41](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/34459453-43f4-4a10-935d-c3e7423b4ebb)
+![screencapture-eth-global-world-id-vercel-app-2023-06-25-07_25_30](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/5f9d534b-6e48-48bb-9d35-3e78b098860f)
 
 ![screencapture-localhost-3000-2023-06-25-04_10_54](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/434a2966-a3ab-4944-b38b-6b530286c1bb)
 
@@ -25,6 +25,12 @@ Voting data will be published on-chain to promote transparency, auditability and
 ## World ID Next.js Template
 
 This is a template repository for creating a new project using Next.js and the [World ID SDK](https://id.worldcoin.org). This template isn't intended for use cases that require on-chain verification, but rather for use cases that require off-chain web backend verification.
+
+## Bounties Implemented
+
+Check out the live voting results on Polygon to see if A or B wins - https://mumbai.polygonscan.com/address/0x7dd3be682c7e33abc723bd470b7c5256ba7613cf
+
+Check out ZK-Vote - https://eth-global-world-id.vercel.app
 
 ## Getting Started
 
