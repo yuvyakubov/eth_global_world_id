@@ -63,7 +63,7 @@ export default function Home() {
 			</div>
 			<div className={styles.boxContainer}>
 				<p className={styles.centeredParagraph}>
-					ZK-Vote is a privacy-preserving and auditable voting platform built on <a href="https://worldcoin.org/" target="_blank" rel="noopener noreferrer" className={styles.link}>World ID</a> and <a href="https://polygon.technology/" target="_blank" rel="noopener noreferrer" className={styles.link}>Polygon</a>.
+					ZK-Vote is a privacy-preserving and transparent voting platform built on <a href="https://worldcoin.org/" target="_blank" rel="noopener noreferrer" className={styles.link}>World ID</a> and <a href="https://polygon.technology/" target="_blank" rel="noopener noreferrer" className={styles.link}>Polygon</a>.
 				</p>
 				<br /><br />
 				<p className={styles.centeredParagraph}>
