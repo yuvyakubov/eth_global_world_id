@@ -1,4 +1,28 @@
-# World ID Next.js Template
+# ZK-Vote - Zero Knowledge Proof Voting
+
+ZK-Vote is a privacy-preserving and auditable voting platform built on World ID and Polygon.
+
+Voting data will be published on-chain to promote transparency, auditability and real-time tracking, adding trust and reliability to the voting process.
+
+## ZK-Vote Screenshots
+
+![screencapture-localhost-3000-2023-06-25-04_10_41](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/34459453-43f4-4a10-935d-c3e7423b4ebb)
+
+![screencapture-localhost-3000-2023-06-25-04_10_54](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/434a2966-a3ab-4944-b38b-6b530286c1bb)
+
+![screencapture-localhost-3000-2023-06-25-04_11_18](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/f684eed0-944f-4f1d-a3d9-4d02f8b035df)
+
+![screencapture-localhost-3000-2023-06-25-04_11_27](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/41e53769-17a5-4fa2-943a-520a41a6aa17)
+
+![screencapture-localhost-3000-voting-2023-06-25-04_11_35](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/5907edf6-1317-4e0b-bdb2-3ca6d35affdc)
+
+<img width="1436" alt="Screen Shot 2023-06-25 at 4 12 14 AM" src="https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/f1f7b7d5-b14a-4568-95d1-bf19b69cfa68">
+
+![screencapture-localhost-3000-success-2023-06-25-04_32_46](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/0e45c5a1-b6ff-478b-93c3-64ea029025a3)
+
+![screencapture-mumbai-polygonscan-address-0x7dd3be682c7e33abc723bd470b7c5256ba7613cf-2023-06-25-04_17_32](https://github.com/yuvyakubov/eth_global_world_id/assets/29648095/0b85e75b-1877-4438-8933-86d6870b050b)
+
+## World ID Next.js Template
 
 This is a template repository for creating a new project using Next.js and the [World ID SDK](https://id.worldcoin.org). This template isn't intended for use cases that require on-chain verification, but rather for use cases that require off-chain web backend verification.
 
