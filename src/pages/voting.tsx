@@ -112,27 +112,6 @@ const Vote = () => {
                 }
             ];
 
-            // let signature = '';
-
-            // fetch("/api/signMessage", {
-            //     method: "GET",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            // }).then(async (res: Response) => {
-            //     const jsonRes = await res.json();
-            //     console.log(jsonRes);
-            //     console.log(jsonRes.signature);
-
-            //     if (res.status == 200) {
-            //         console.log("Successfully verified credential.")
-            //         signature = jsonRes.signature;
-            //     } else {
-            //         throw new Error("Error: " + (await res.json()).code) ?? "Unknown error.";
-            //     }
-
-            // });
-
             const signer = await provider.getSigner();
             const contract = new ethers.Contract(address, abi, signer);
             const tx = await contract.voteForA(nullifierHash);
