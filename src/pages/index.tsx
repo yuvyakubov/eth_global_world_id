@@ -53,8 +53,8 @@ export default function Home() {
 	};
 
 	function handleButtonClick() {
-        window.location.href = "/";
-    };
+		window.location.href = "/";
+	};
 
 	return (
 		<div className={styles.container}>
@@ -63,11 +63,11 @@ export default function Home() {
 			</div>
 			<div className={styles.boxContainer}>
 				<p className={styles.centeredParagraph}>
-					ZK-Vote is a privacy-preserving and auditable voting platform built on World ID and Polygon.
+					ZK-Vote is a privacy-preserving and auditable voting platform built on <a href="https://worldcoin.org/" target="_blank" rel="noopener noreferrer" className={styles.link}>World ID</a> and <a href="https://polygon.technology/" target="_blank" rel="noopener noreferrer" className={styles.link}>Polygon</a>.
 				</p>
 				<br /><br />
 				<p className={styles.centeredParagraph}>
-					Voting data will be published on-chain to promote transparency, auditability and real-time tracking, adding trust and reliability to the voting process.
+					Voting data will be published on-chain to promote transparency, auditability, and real-time tracking, adding trust and reliability to the voting process.
 				</p>
 			</div>
 			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "28.2vh" }}>
