@@ -265,7 +265,7 @@ const Vote = () => {
             </div>
             <div className={styles.boxContainer}>
                 <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
-                    Voters can only vote once. This is tracked by your World ID.
+                    Voters can vote only once. This is tracked by your World ID, which proves that you are a unique voter.
                 </p>
                 <br /><br />
                 <p className={`${styles.centeredParagraph} ${styles.typingAnimation}`}>
